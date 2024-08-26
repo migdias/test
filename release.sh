@@ -20,7 +20,7 @@ fi
 git fetch --tags
 
 # Get the latest tag
-LATEST_TAG=$(git describe --tags --abbrev=0)
+LATEST_TAG=$(git tag --list | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
 
 # If no tags are found, start with 0.0.0
 if [ -z "$LATEST_TAG" ]; then
